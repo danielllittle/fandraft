@@ -11,5 +11,9 @@ class Team {
     static belongsTo = [owner: User, league : League]
 
     static constraints = {
+        owner nullable: false
+        league nullable: false
+        name blank: false
+        draftPosition min: 1
     }
 }

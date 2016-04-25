@@ -6,6 +6,6 @@ class Player {
     Position position
 
     static constraints = {
-        email : true
+        name blank: false
     }
 }
