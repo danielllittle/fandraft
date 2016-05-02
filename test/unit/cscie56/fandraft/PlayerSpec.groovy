@@ -16,5 +16,6 @@ class PlayerSpec extends Specification {
     }
 
     void "test something"() {
+
     }
 }

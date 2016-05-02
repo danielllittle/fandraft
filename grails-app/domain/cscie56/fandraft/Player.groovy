@@ -7,5 +7,6 @@ class Player {
 
     static constraints = {
         name blank: false
+        position nullable: false
     }
 }
