@@ -76,7 +76,7 @@ class TeamController {
             teamInstance.draftBoardaddToDraftBoard(indPlayer)
         }*/
         teamInstance.draftBoard = newOrderDraft
-        render status: NO_CONTENT 
+        render status: NO_CONTENT
     }
 
     @Transactional

@@ -27,10 +27,10 @@ class BootStrap {
         reader.each{ batchList ->
            batchList.each { map ->
                 if (map['playerID']?.length() > 0 && map['firstName']?.length() > 0 && map['lastName']?.length() > 0 && map['finalGame']?.startsWith("2015")) {
-                    println "saved: " + map.subMap(keys << 'finalGame')
+                    //println "saved: " + map.subMap(keys << 'finalGame')
                     def player = new Player(map.subMap(keys)).save(failOnError: true)
                     league.draftPool.addToPlayers(player)
-                    println "saved: " + map.subMap(keys << 'finalGame')
+
                 } else {
                     //println "rejected: " + map.subMap(keys << 'finalGame')
                 }

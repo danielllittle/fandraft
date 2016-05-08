@@ -52,20 +52,26 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar">
 					<ul class="nav navbar-nav">
-						<sec:ifLoggedIn><li<g:if test="${tab == 'account'}"> class="active"</g:if>><g:link controller="user" action="edit" id="${sec.loggedInUserInfo(field:"id")}">AccountG</g:link></li></sec:ifLoggedIn>
-						<sec:ifLoggedIn><li<g:if test="${tab == "teams"}"> class="active"</g:if>><g:link controller="team" action="myindex" id="${sec.loggedInUserInfo(field:"id")}">My Teams</g:link></li></sec:ifLoggedIn>
-						<li<g:if test="${tab == "players"}"> class="active"</g:if>><a id="draftLink" href="/fandraft/team/create">Players <span class="sr-only">(current)</span></a></li>
+						<sec:ifLoggedIn><li<g:if test="${tab == 'account'}"> class="active"</g:if>><g:link controller="user" action="edit" id="${sec.loggedInUserInfo(field:"id")}">Account <span class="sr-only">(current)</span></g:link></li></sec:ifLoggedIn>
+						<sec:ifLoggedIn><li<g:if test="${tab == "teams"}"> class="active"</g:if>><g:link controller="team" action="myindex" id="${sec.loggedInUserInfo(field:"id")}">My Teams <span class="sr-only">(current)</span></g:link></li></sec:ifLoggedIn>
+						<!--li<g:if test="${tab == "players"}"> class="active"</g:if>><a id="draftLink" href="/fandraft/team/create">Players <span class="sr-only">(current)</span></a></li-->
 
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<sec:ifLoggedIn>
+
+						<sec:ifLoggedIn>
+							<li>
 								<a id="logoutLink" name="logoutLink" href="/fandraft/logout/index"><span class="glyphicon glyphicon-log-in"></span> Logout<span class=" sr-only">(current)</span></a>
-							</sec:ifLoggedIn>
-							<sec:ifNotLoggedIn>
+							</li>
+						</sec:ifLoggedIn>
+						<sec:ifNotLoggedIn>
+							<li>
 								<a id="loginlink" name="loginLink" href="/fandraft/login/auth"><span class="glyphicon glyphicon-log-in"></span> Login</a> <span class="sr-only">(current)</span>
+							</li>
+							<li>
 								<a id="createuserlink" name="createuserlink" href="/fandraft/user/create"><span class="glyphicon glyphicon-sign-up"></span> Sign-up</a> <span class="sr-only">(current)</span>
-							</sec:ifNotLoggedIn>
+							</li>
+						</sec:ifNotLoggedIn>
 						</li>
 					</ul>
 
