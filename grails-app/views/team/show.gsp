@@ -64,7 +64,7 @@
 
 					<h3>Roster</h3><ul class="list-group">
 						<g:each in="${teamInstance.players.sort{it.position}}" var="p">
-							<li class="list-group-item"><span class="badge">${p?.position?.value?.encodeAsHTML()}</span>${p?.fullName?.encodeAsHTML()}</li>
+							<li class="list-group-item"><span class="badge">${p?.position?.value?.encodeAsHTML()}</span>${p?.fullName?.encodeAsHTML()}, ${p?.team}</li>
 							<!--span class="property-value" aria-labelledby="players-label"><g:link controller="player" action="show" id="${p.id}">${p?.firstName?.encodeAsHTML()}</g:link></span-->
 						</g:each>
 					</ul>

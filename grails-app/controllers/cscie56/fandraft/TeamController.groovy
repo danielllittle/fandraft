@@ -60,6 +60,26 @@ class TeamController {
     }
 
     @Transactional
+    def ajaxedit(Team teamInstance) {
+        if (teamInstance == null) {
+            notFound()
+            return
+        }
+        List<Player> newOrderDraft = new LinkedList<Player>()
+        def ids = params.draftOrder.split(',')
+        ids?.each { playerid ->
+            Player player = teamInstance.draftBoard.find{it.playerID == playerid}
+            newOrderDraft.add(player)
+        }
+        /*newOrderDraft.each { indPlayer ->
+            println 'adding ' + indPlayer
+            teamInstance.draftBoardaddToDraftBoard(indPlayer)
+        }*/
+        teamInstance.draftBoard = newOrderDraft
+        render status: NO_CONTENT 
+    }
+
+    @Transactional
     def update(Team teamInstance) {
         if (teamInstance == null) {
             notFound()

@@ -10,6 +10,9 @@
 		<title>FanDraft</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
 		<!--g:layoutHead/-->
@@ -17,7 +20,20 @@
 
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<!--script src="//code.jquery.com/jquery-1.10.2.js"></script-->
 
+
+		<style>
+		#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+		#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+		#sortable li span { position: absolute; margin-left: -1.3em; }
+		li>a{ color: red; }		</style>
+		<script>
+			$(function() {
+				$( "#sortable" ).sortable();
+				$( "#sortable" ).disableSelection();
+			});
+		</script>
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
@@ -60,7 +76,6 @@
 		<g:layoutBody/>
 		<!--div class="footer" role="contentinfo"></div-->
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 

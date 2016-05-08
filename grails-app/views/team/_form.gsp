@@ -37,8 +37,24 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="draftPosition" type="number" min="1" value="${teamInstance.draftPosition}" required=""/>
-
 </div>-->
+
+<script language="javascript">
+	$(document).ready(function(){
+		$('#sortable').sortable({
+			update: function(event, ui) {
+				var draftOrder = $(this).sortable('toArray').toString();
+				$.post('/fandraft/team/ajaxedit/${teamInstance?.id}', {draftOrder:draftOrder});
+			}
+		});
+	});
+</script>
+
+<ul id="sortable" class="ui-sortable">
+	<g:each in="${teamInstance.draftBoard}" var="player">
+		<li id="${player.playerID?.encodeAsHTML()}" class=" ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>${player.getFullName()}, ${player?.position?.value}, ${player?.team}</li>
+	</g:each>
+</ul>
 
 <div class="fieldcontain ${hasErrors(bean: teamInstance, field: 'players', 'error')} ">
 	<label for="players">
