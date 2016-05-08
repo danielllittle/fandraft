@@ -44,6 +44,9 @@ class TeamController {
             return
         }
 
+        teamInstance.league.draftPool.players.each { player ->
+            teamInstance.addToDraftBoard(player)
+        }
         teamInstance.save flush:true
 
         request.withFormat {

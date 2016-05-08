@@ -36,6 +36,7 @@ class LeagueController {
             return
         }
 
+        leagueInstance.draftPool = League.findByName("bootstrap")?.draftPool
         leagueInstance.save flush:true
 
         request.withFormat {
