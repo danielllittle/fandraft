@@ -13,7 +13,7 @@ import java.awt.Color
 class BootStrap {
 
     def init = { servletContext ->
-/*
+
         def keys = ['playerID','birthYear','firstName','lastName','weight','height','bats','throows']
 
         def battingkeys = ['year','team','league','games','atBats','runs','hits','doubles','triples','homeRuns',
@@ -21,12 +21,15 @@ class BootStrap {
                            'sacrificeHits','sacrificeFlys','gidp']
 
 
+        League league = new League(drafted: false, name: 'bootstrap', color: Color.red);
+
         def reader = new File("grails-app/conf/resources/Master.csv").toCsvMapReader([batchSize:50])
         reader.each{ batchList ->
            batchList.each { map ->
                 if (map['playerID']?.length() > 0 && map['firstName']?.length() > 0 && map['lastName']?.length() > 0 && map['finalGame']?.startsWith("2015")) {
                     println "saved: " + map.subMap(keys << 'finalGame')
-                    new Player(map.subMap(keys)).save(failOnError: true)
+                    def player = new Player(map.subMap(keys)).save(failOnError: true)
+                    league.draftPool.addToPlayers(player)
                     println "saved: " + map.subMap(keys << 'finalGame')
                 } else {
                     //println "rejected: " + map.subMap(keys << 'finalGame')
@@ -43,13 +46,13 @@ class BootStrap {
                     if (bstats.validate()) {
                         bstats.save(failOnError: true)
                         player.addToBattingStats(bstats)
-                        println "added batting stats: " + map['playerID'] + " : " + bstats
+                        //println "added batting stats: " + map['playerID'] + " : " + bstats
                     } else {
                         println "rejected: " + map
                     }
 
                 } else {
-                    println "couldn't locate " + map['playerID']
+                    //println "couldn't locate " + map['playerID']
                 }
             }
         }
@@ -92,14 +95,15 @@ class BootStrap {
                         }
 
                     } else {
-                        println "couldn't locate " + map['playerID']
+                        //println "couldn't locate " + map['playerID']
                     }
+                    player.team = map['teamID']
                 }
             }
         }
 
         Player.list().each {println it.firstName + it.lastName + it.bats + it.birthYear}
-*/
+
         def adminRole = Role.findOrSaveWhere(authority : "ROLE_ADMIN")
         def adminUser = User.findOrSaveWhere(username: "admin", password: 'admin')
 
@@ -107,16 +111,16 @@ class BootStrap {
             UserRole.create(adminUser, adminRole, true);
         }
 
-        League league = new League(drafted: false, name: 'bootstrap', color: Color.red);
 
-        Position.each { pos ->
+
+        /*Position.each { pos ->
             20.times { idx ->
                 Player player = new Player(firstName:  'fn-' + pos + '-' + idx, lastName: 'ln-' + pos + '-' + idx,
                         position: pos, 'playerID': 'pid-'+ pos + '-' + idx)
                 player.save(failOnError: true)
                 league.draftPool.addToPlayers(player)
             }
-        }
+        }*/
 
 
         def userRole = Role.findOrSaveWhere(authority : "ROLE_USER")

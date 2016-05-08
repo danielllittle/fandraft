@@ -10,14 +10,14 @@ class League {
     Date draftDate;
     boolean drafted;
     def roster = [STARTING_PITCHER, STARTING_PITCHER, STARTING_PITCHER, STARTING_PITCHER, STARTING_PITCHER,
-                  RELIEF_PITCHER, RELIEF_PITCHER, CATCHER, FIRST_BASE, SECOND_BASE, SHORT_STOP,  THIRD_BASE,
+                  /*RELIEF_PITCHER, RELIEF_PITCHER,*/ CATCHER, FIRST_BASE, SECOND_BASE, SHORT_STOP,  THIRD_BASE,
                   OUTFIELD, OUTFIELD, OUTFIELD ]
     DraftPool draftPool = new DraftPool();
 
     static constraints = {
         name blank: false
         manager nullable: false
-        draftDate nullable: false, min: new Date()
+        draftDate nullable: true, min: new Date()
     }
 
     static hasMany = [teams: Team]

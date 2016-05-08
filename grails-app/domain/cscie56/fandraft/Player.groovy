@@ -15,6 +15,7 @@ class Player {
     String weight
     String height;
     String debut;
+    String team;
 
     static hasMany = [battingStats : BattingStats, pitchingStats : PitchingStats]
 
@@ -26,6 +27,7 @@ class Player {
         bats nullable: true
         height nullable: true
         throows nullable: true
+        team nullable: true
         weight nullable: true
 
     }

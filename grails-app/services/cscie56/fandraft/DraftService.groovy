@@ -21,7 +21,7 @@ class DraftService {
 
     def unlockLeague(League league) {
         league.drafted = true
-        league.save(flush: true)
+        league.save(flush: true, failOnError: true)
     }
 
     def draftPlayers(League league) {

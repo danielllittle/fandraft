@@ -17,6 +17,11 @@ enum Position {
         return value
     }
 
+    @Override
+    public String toString() {
+        value
+    }
+
     /*static List<Position> getBatters () {
         [CATCHER("C"), FIRST_BASE("1B"),
         SECOND_BASE("2B"), SHORT_STOP("SS"),
