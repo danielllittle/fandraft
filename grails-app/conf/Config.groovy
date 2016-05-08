@@ -103,6 +103,8 @@ log4j.main = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
+    debug 'grails.app.jobs'
+
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -131,4 +133,23 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/images/**':    ['permitAll'],
 	'/**/favicon.ico':  ['permitAll']
 ]
+
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'cscie56.fandraft.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'cscie56.fandraft.UserRole'
+grails.plugin.springsecurity.authority.className = 'cscie56.fandraft.Role'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                ['permitAll'],
+	'/index':           ['permitAll'],
+	'/index.gsp':       ['permitAll'],
+	'/assets/**':       ['permitAll'],
+	'/**/js/**':        ['permitAll'],
+	'/**/css/**':       ['permitAll'],
+	'/**/images/**':    ['permitAll'],
+	'/**/favicon.ico':  ['permitAll']
+]
+
+grails.plugin.springsecurity.logout.postOnly = false
 

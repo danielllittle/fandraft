@@ -1,24 +1,30 @@
 package cscie56.fandraft
 
+import static cscie56.fandraft.Position.*
+
 class League {
 
     String name;
-    String color;
-    int size;
+    int getSize() {teams?.size()};
     User manager;
     Date draftDate;
     boolean drafted;
-    DraftPool draftPool;
-
-
+    def roster = [STARTING_PITCHER, STARTING_PITCHER, STARTING_PITCHER, STARTING_PITCHER, STARTING_PITCHER,
+                  RELIEF_PITCHER, RELIEF_PITCHER, CATCHER, FIRST_BASE, SECOND_BASE, SHORT_STOP,  THIRD_BASE,
+                  OUTFIELD, OUTFIELD, OUTFIELD ]
+    DraftPool draftPool = new DraftPool();
 
     static constraints = {
         name blank: false
         manager nullable: false
-        draftDate nullable: false
-        size min: 4, max: 12
+        draftDate nullable: false, min: new Date()
     }
 
     static hasMany = [teams: Team]
+
+    @Override
+    String toString() {
+        name
+    }
 
 }

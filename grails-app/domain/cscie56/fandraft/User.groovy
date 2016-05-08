@@ -1,10 +1,11 @@
 package cscie56.fandraft
 
+import grails.plugin.springsecurity.annotation.Secured
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
 @EqualsAndHashCode(includes='username')
-@ToString(includes='username', includeNames=true, includePackage=false)
+@ToString(includes='username')
 class User implements Serializable {
 
 	private static final long serialVersionUID = 1
@@ -17,10 +18,9 @@ class User implements Serializable {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
-	String email
-	String firstname
-	String lastname
-
+	//String email
+	//String firstname
+	//String lastname
 
 	User(String username, String password) {
 		this()
@@ -48,15 +48,20 @@ class User implements Serializable {
 
 	static transients = ['springSecurityService']
 
-	static constraints = {
+	static mapping = {
+		password column: '`password`'
+	}
+
+	@Override
+	String toString() {
+		username
+	}
+
+	/*static constraints = {
 		username blank: false, unique: true
 		password blank: false
 		firstname blank: false
 		lastname blank: false
 		email blank: false, unique: true, email: true
-	}
-
-	static mapping = {
-		password column: '`password`'
-	}
+	}*/
 }

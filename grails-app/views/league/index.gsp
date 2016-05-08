@@ -30,11 +30,9 @@
 					
 						<g:sortableColumn property="draftDate" title="${message(code: 'league.draftDate.label', default: 'Draft Date')}" />
 					
-						<g:sortableColumn property="size" title="${message(code: 'league.size.label', default: 'Size')}" />
-					
-						<g:sortableColumn property="color" title="${message(code: 'league.color.label', default: 'Color')}" />
-					
 						<th><g:message code="league.draftPool.label" default="Draft Pool" /></th>
+					
+						<g:sortableColumn property="drafted" title="${message(code: 'league.drafted.label', default: 'Drafted')}" />
 					
 					</tr>
 				</thead>
@@ -48,11 +46,9 @@
 					
 						<td><g:formatDate date="${leagueInstance.draftDate}" /></td>
 					
-						<td>${fieldValue(bean: leagueInstance, field: "size")}</td>
-					
-						<td>${fieldValue(bean: leagueInstance, field: "color")}</td>
-					
 						<td>${fieldValue(bean: leagueInstance, field: "draftPool")}</td>
+					
+						<td><g:formatBoolean boolean="${leagueInstance.drafted}" /></td>
 					
 					</tr>
 				</g:each>

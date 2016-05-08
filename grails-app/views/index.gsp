@@ -3,7 +3,8 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<title>Welcome to Grails</title>
-		<style type="text/css" media="screen">
+		<style type="text/
+		" media="screen">
 			#status {
 				background-color: #eee;
 				border: .2em solid #fff;
@@ -82,7 +83,7 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
+		<!--div id="status" role="complementary">
 			<h1>Application Status</h1>
 			<ul>
 				<li>App version: <g:meta name="app.version"/></li>
@@ -101,9 +102,9 @@
 					<li>${plugin.name} - ${plugin.version}</li>
 				</g:each>
 			</ul>
-		</div>
+		</div-->
 		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
+			<!--h1>Welcome to Grails</h1>
 			<p>Congratulations, you have successfully started your first Grails application! At the moment
 			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
 			   content you may choose. Below is a list of controllers that are currently deployed in this application,
@@ -116,7 +117,14 @@
 						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
 					</g:each>
 				</ul>
-			</div>
+			</div>-->
+			<h1>Welcome to FanDraft</h1>
+			<p>A fantasy baseball draft simulator written in Grails.   Users must be registered to utilize the site.
+			Anyone can sign-up, create a new team within an existing league.   League manager users are additonally
+			allowed to create new leagues.   League managers are also allowed to customize the date and time of the
+			draft.   Leagues will be comprised of both american and national league players.   Historical player
+			statistics are provided by <a href="http://www.seanlahman.com/baseball-archive/statistics">Sean Lahman.</a>
+			</p>
 		</div>
 	</body>
 </html>

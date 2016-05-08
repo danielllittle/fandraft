@@ -1,11 +1,12 @@
 package cscie56.fandraft
 
-
+import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+@Secured(['ROLE_USER'])
 class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -15,14 +16,17 @@ class UserController {
         respond User.list(params), model:[userInstanceCount: User.count()]
     }
 
+    @Secured(['ROLE_USER'])
     def show(User userInstance) {
         respond userInstance
     }
 
+    @Secured(['ROLE_ANONYMOUS'])
     def create() {
         respond new User(params)
     }
 
+    @Secured(['ROLE_ANONYMOUS', 'ROLE_USER'])
     @Transactional
     def save(User userInstance) {
         if (userInstance == null) {
@@ -37,6 +41,9 @@ class UserController {
 
         userInstance.save flush:true
 
+        if (!userInstance.authorities.contains(Role.findByAuthority("ROLE_USER"))) {
+            UserRole.create userInstance, Role.findByAuthority("ROLE_USER"), true
+        }
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])

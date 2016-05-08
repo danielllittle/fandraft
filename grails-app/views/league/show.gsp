@@ -36,7 +36,7 @@
 				<li class="fieldcontain">
 					<span id="manager-label" class="property-label"><g:message code="league.manager.label" default="Manager" /></span>
 					
-						<span class="property-value" aria-labelledby="manager-label"><g:link controller="user" action="show" id="${leagueInstance?.manager?.id}">${leagueInstance?.manager?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="manager-label"><g:link controller="user" action="show" id="${leagueInstance?.manager?.id}">${leagueInstance?.manager?.username?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -50,32 +50,14 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${leagueInstance?.size}">
-				<li class="fieldcontain">
-					<span id="size-label" class="property-label"><g:message code="league.size.label" default="Size" /></span>
-					
-						<span class="property-value" aria-labelledby="size-label"><g:fieldValue bean="${leagueInstance}" field="size"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${leagueInstance?.color}">
-				<li class="fieldcontain">
-					<span id="color-label" class="property-label"><g:message code="league.color.label" default="Color" /></span>
-					
-						<span class="property-value" aria-labelledby="color-label"><g:fieldValue bean="${leagueInstance}" field="color"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${leagueInstance?.draftPool}">
+				<!--<g:if test="${leagueInstance?.draftPool}">
 				<li class="fieldcontain">
 					<span id="draftPool-label" class="property-label"><g:message code="league.draftPool.label" default="Draft Pool" /></span>
 					
 						<span class="property-value" aria-labelledby="draftPool-label"><g:link controller="draftPool" action="show" id="${leagueInstance?.draftPool?.id}">${leagueInstance?.draftPool?.encodeAsHTML()}</g:link></span>
 					
 				</li>
-				</g:if>
+				</g:if>-->
 			
 				<g:if test="${leagueInstance?.drafted}">
 				<li class="fieldcontain">
@@ -91,7 +73,7 @@
 					<span id="teams-label" class="property-label"><g:message code="league.teams.label" default="Teams" /></span>
 					
 						<g:each in="${leagueInstance.teams}" var="t">
-						<span class="property-value" aria-labelledby="teams-label"><g:link controller="team" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="teams-label"><g:link controller="team" action="show" id="${t.id}">${t?.name?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
