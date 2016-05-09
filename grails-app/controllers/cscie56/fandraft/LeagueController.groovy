@@ -36,7 +36,10 @@ class LeagueController {
             return
         }
 
-        leagueInstance.draftPool = League.findByName("bootstrap")?.draftPool
+        def players = League.findByName("bootstrap")?.draftPool.players
+        players?.each {player ->
+            leagueInstance.draftPool.addToPlayers(player)
+        }
         leagueInstance.save flush:true
 
         request.withFormat {
