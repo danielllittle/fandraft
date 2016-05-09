@@ -9,9 +9,12 @@ class DraftService {
 
 
     def assignDraftOrder(League league) {
-        List<Integer> order = (1..league.teams.size()).flatten()
-        Collections.shuffle(order)
-        league.teams.each {it.draftPosition = order.pop()}
+        List<Integer> order = (1..league.teams?.size())?.flatten()
+        if (order) {
+            Collections.shuffle(order)
+            league.teams.each {it.draftPosition = order.pop()}
+        }
+
     }
 
 

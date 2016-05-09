@@ -57,11 +57,8 @@ class User implements Serializable {
 		username
 	}
 
-	/*static constraints = {
+	static constraints = {
 		username blank: false, unique: true
 		password blank: false
-		firstname blank: false
-		lastname blank: false
-		email blank: false, unique: true, email: true
-	}*/
+	}
 }

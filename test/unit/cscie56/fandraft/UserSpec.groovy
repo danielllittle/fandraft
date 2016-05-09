@@ -28,41 +28,18 @@ class UserSpec extends Specification {
         when: 'an object is blank'
         user.username = ''
         user.password = ''
-        user.email = ''
-        user.firstname = ''
-        user.lastname = ''
 
         then: 'validate() returns false and the appropriate error is created'
         !user.validate()
         user.hasErrors()
-        user.errors.errorCount == 5
+        user.errors.errorCount == 2
     }
 
-    void "test email constraing"() {
-        when: 'an object is valid'
-        def user = new User(username: 'testuser', firstname: "fn", lastname: "ln", password: 'pw', email: 'addr@addr.com')
-
-        then: 'validate() returns true and there are no errors'
-
-        user.validate()
-        !user.hasErrors()
-        user.errors.errorCount == 0
-
-        when: 'an email is malformed'
-
-        user.email = 'a@'
-
-
-        then: 'validate() returns false and the appropriate error is created'
-        !user.validate()
-        user.hasErrors()
-        user.errors.errorCount == 1
-    }
 
     void "test unique constraint"() {
         when: 'two objects are valid'
-        def user1 = new User(username: 'testuser1', firstname: "fn", lastname: "ln", password: 'pw', email: 'addr1@addr.com')
-        def user2 = new User(username: 'testuser2', firstname: "fn", lastname: "ln", password: 'pw', email: 'addr2@addr.com')
+        def user1 = new User(username: 'testuser1', firstname: "fn", lastname: "ln", password: 'pw')
+        def user2 = new User(username: 'testuser2', firstname: "fn", lastname: "ln", password: 'pw')
 
         then: 'validate() returns true and there are no errors'
 
@@ -76,11 +53,11 @@ class UserSpec extends Specification {
 
         when: 'two objects arent unique'
         user1.username = user2.username
-        user1.email = user2.email
+
 
         then: 'validate() returns false and the appropriate errors are created'
         !user1.validate()
         user1.hasErrors()
-        user1.errors.errorCount == 2
+        user1.errors.errorCount == 1
     }
 }
