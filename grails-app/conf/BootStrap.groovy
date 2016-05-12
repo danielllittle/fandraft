@@ -124,7 +124,7 @@ class BootStrap {
 
 
         def userRole = Role.findOrSaveWhere(authority : "ROLE_USER")
-        (1..4).each { it ->
+        (1..5).each { it ->
             def testUser = User.findOrSaveWhere(username: "test" + it, password: 'test' + it)
 
             if (!testUser.authorities.contains(userRole)) {
@@ -132,11 +132,23 @@ class BootStrap {
             }
             Team team = new Team(owner: testUser, name: 'team' + it, league: league, draftPosition: 1)
             league.draftPool.players.each {team.addToDraftBoard(it)}
-            league.addToTeams(team)
-            league.manager = testUser
-            if (it == 12 || it == 6) {
+            if (it == 1) {
+                team.name = "The A's have it"
+            } else if (it == 2) {
+                team.name = "Big Boppers"
+                team.draftBoard.sort(true, {a,b -> a?.battingStats?.homeRuns?.sum() <=> a?.battingStats?.homeRuns?.sum()})
+            } else if (it == 3) {
+                team.name = "Lefties first"
+                team.draftBoard.sort(true, {a,b ->  a?.throows <=> b?.throows})
+            } else if (it == 4) {
+                team.name = "Oldies but Goodies"
+                team.draftBoard.sort(true, {a,b ->  a?.birthYear <=> b?.birthYear})
+            } else if (it == 5) {
+                team.name = "Z thing"
                 team.draftBoard.reverse(true)
             }
+            league.addToTeams(team)
+            league.manager = testUser
         }
         league.draftDate = new Date() //ready to be picked up
         league.save(failOnError: true)

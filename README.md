@@ -1,6 +1,5 @@
 # fandraft 
  
-## [draft version - please refrain from complete review until May 3]
 
 A fantasy baseball draft simulator written in Grails.   Users must be registered to utilize the site.   General users are free to sign-up, create a new team within an existing league.   League manager users are additonally allowed to create new leagues with various custom options.   League managers are also allowed to pick the date and time of the draft, the # of teams that participate within the league and whether the league consists of National League only, American League or a combination league of both american and national league players.
 
@@ -10,3 +9,4 @@ Dependencies:
 
 1. Quartz plugin for Grails - [Job execution] - compile "org.grails.plugins:quartz:1.0.2"
 2. Spring Security Core Plugin - [User Role Mgmt] - compile "org.grails.plugins:spring-security-core:2.0.0"
+3. CSV file parser - [Baseball statistic archive parser] - compile "org.grails.plugins:csv:0.3.1"
