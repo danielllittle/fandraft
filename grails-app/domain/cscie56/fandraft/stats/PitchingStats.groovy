@@ -24,4 +24,8 @@ class PitchingStats {
 
     static constraints = {
     }
+
+    static mapping = {
+        cache usage:'read-only'
+    }
 }

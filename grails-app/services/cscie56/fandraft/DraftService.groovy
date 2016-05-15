@@ -41,7 +41,7 @@ class DraftService {
             assert (team != null)
             def teamDraftPicks = draftBoards[team]
             print (" #posneeded: " + teamDraftPicks.size())
-            def player = team.draftBoard.find {teamDraftPicks.contains(it.position)}
+            def player = team.draftBoard.find {teamDraftPicks.contains(it?.position)}
             print (" team drafted:" + player)
             teamDraftPicks.remove(player.position)
             league.teams*.removeFromDraftBoard(player)

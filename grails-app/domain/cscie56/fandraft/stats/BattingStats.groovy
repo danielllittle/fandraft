@@ -3,17 +3,17 @@ package cscie56.fandraft.stats
 class BattingStats {
 
     String team
-    String year
-    String games
+    int year
+    int games
     String atBats
     String runs
     String hits
     String league
     String doubles
     String triples
-    String homeRuns
+    int homeRuns
     String rbis
-    String stolenBases
+    int stolenBases
     String caughtStealing
     String walks
     String strikeouts
@@ -24,5 +24,8 @@ class BattingStats {
     String gidp
 
     static constraints = {
+    }
+    static mapping = {
+        cache usage:'read-only'
     }
 }

@@ -28,6 +28,28 @@ class TeamController {
         respond teamInstance
     }
 
+    /*def ajaxshow(Team teamInstance) {
+        def draftboard = []
+        teamInstance.draftBoard.eachWithIndex {player, idx ->
+            draftboard << [draftrank:idx.toString(), name:player.fullName, position: player.position.value, team: player.team]
+        }
+        /*render(contentType: "text/json") {
+            draftboard {
+                teamInstance.draftBoard.eachWithIndex { player, idx ->
+                    player  ( draftrank:idx.toString(), name:player.fullName, position: player.position.value, team: player.team)
+                }
+            }
+        }
+        /*render(contentType: "application/json") {
+            [teamInstance.draftBoard.eachWithIndex { player, idx ->
+                [draftrank:idx.toString(), name:player.fullName, position: player.position.value, team: player.team]
+            }
+            ]
+        }
+
+
+    }*/
+
     def create() {
         respond new Team(params)
     }

@@ -36,7 +36,7 @@ class LeagueController {
             return
         }
 
-        def players = League.findByName("bootstrap")?.draftPool.players
+        def players = League.findByName("The bootstrap league")?.draftPool.players
         players?.each {player ->
             leagueInstance.draftPool.addToPlayers(player)
         }
